@@ -14,30 +14,29 @@ public class FakePersonDataAccessServer implements PersonDao{
     private static List<Person> DB = new ArrayList<>();
 
     @Override
-    public int insertPerson(UUID id, Person person){
-        DB.add(new Person(id, person.getName()));
+    public int insertPerson(UUID id, Person user){
+        DB.add(new Person(id, user.getName()));
         return 0;
     }
 
     @Override
-    public List<Person> selectAllPeople() {
-        return DB;
+    public List<Person> selectAllPeople() {return DB;
     }
 
     @Override
     public Optional<Person> selectPersonById(UUID id) {
         return DB.stream()
-                .filter(person -> person.getId().equals(id))
+                .filter(user -> user.getId().equals(id))
                 .findFirst();
     }
 
     @Override
     public int deletePersonById(UUID id) {
-        Optional<Person> personMaybe = selectPersonById(id);
-        if (personMaybe.isEmpty()) {
+        Optional<Person> userMaybe = selectPersonById(id);
+        if (userMaybe.isEmpty()) {
             return 0;
         }
-        DB.remove(personMaybe.get());
+        DB.remove(userMaybe.get());
         return 1;
     }
 
@@ -45,8 +44,8 @@ public class FakePersonDataAccessServer implements PersonDao{
     @Override
     public int updatePersonById(UUID id, Person update) {
         return selectPersonById(id)
-                .map(person -> {
-                    int indexOfPersonToUpdate = DB.indexOf(person);
+                .map(user -> {
+                    int indexOfPersonToUpdate = DB.indexOf(user);
                     if (indexOfPersonToUpdate >= 0){
                         DB.set(indexOfPersonToUpdate, new Person(id, update.getName()));
                         return 1;

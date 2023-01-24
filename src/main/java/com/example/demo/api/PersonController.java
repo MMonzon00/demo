@@ -1,45 +1,45 @@
 package com.example.demo.api;
 
-import com.example.demo.model.Person;
-import com.example.demo.service.PersonService;
+import com.example.demo.model.User;
+import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
 
-@RequestMapping("api/v1/person")
+@RequestMapping("api/v1/user")
 @RestController
-public class PersonController {
-    private final PersonService personService;
+public class UserController {
+    private final UserService userService;
     @Autowired
-    public PersonController(PersonService personService) {
-        this.personService = personService;
+    public UserController(UserService userService) {
+        this.userService = userService;
     }
     @PostMapping
-    public void addPerson(@RequestBody Person person){
-        personService.addPerson(person);
+    public void addUser(@RequestBody User user){
+        userService.addUser(user);
     }
 
     @GetMapping
-    public List<Person> getAllPeople(){
-        return personService.getAllPeople();
+    public List<User> getAllPeople(){
+        return userService.getAllPeople();
     }
 
     @GetMapping(path = "{id}")
-    public Person getPersonById(@PathVariable("id") UUID id){
-         return  personService.getPersonById(id)
+    public User getUserById(@PathVariable("id") UUID id){
+         return  userService.getUserById(id)
                  .orElse(null);
     }
 
     @DeleteMapping(path = "{id}")
-    public void deletePersonById(@PathVariable("id") UUID id) {
-        personService.deletePerson(id);
+    public void deleteUserById(@PathVariable("id") UUID id) {
+        userService.deleteUser(id);
     }
 
     @PutMapping(path = "{id}")
-    public void updatePerson(@PathVariable("id") UUID id, @RequestBody Person personToUpdate){
-        personService.updatePerson(id, personToUpdate);
+    public void updateUser(@PathVariable("id") UUID id, @RequestBody User userToUpdate){
+        userService.updateUser(id, userToUpdate);
     }
 }
 
