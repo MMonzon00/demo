@@ -10,13 +10,17 @@ public class User {
 
     private final String email;
 
+    private final String organization;
+
     public User(@JsonProperty("id") UUID id,
                 @JsonProperty("username") String username,
-                @JsonProperty("email") String email
+                @JsonProperty("email") String email,
+                @JsonProperty("organization") String organization
     ) {
         this.id = id;
         this.username = username;
         this.email = email;
+        this.organization = organization;
     }
 
     public UUID getId() {
@@ -29,5 +33,9 @@ public class User {
 
     public String getEmail() {
         return email;
+    }
+
+    public String getOrganization() {
+        return organization;
     }
 }
