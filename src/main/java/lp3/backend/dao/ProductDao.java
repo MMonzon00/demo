@@ -8,9 +8,9 @@ import java.util.UUID;
 public interface ProductDao {
     int insertProduct (UUID id, Product Product);
 
-    default int insertProduct(Product Product){
+    default void insertProduct(Product Product){
         UUID id = UUID.randomUUID();
-        return insertProduct(id, Product);
+        insertProduct(id, Product);
     }
 
     List<Product> selectAllProducts();
@@ -19,8 +19,8 @@ public interface ProductDao {
 
 //    Optional<Product> selectProductByName(String name);
 
-    int deleteProductById(UUID id);
+    void deleteProductById(UUID id);
 
-    int updateProductById(UUID id, Product Product);
+    void updateProductById(UUID id, Product Product);
 }
 

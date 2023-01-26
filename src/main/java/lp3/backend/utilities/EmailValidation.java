@@ -19,3 +19,5 @@ public class EmailValidation implements Predicate<String> {
         return IS_EMAIL_VALID.test(email);
     }
 }
+
+

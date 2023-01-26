@@ -7,7 +7,7 @@ import java.util.UUID;
 
 
 
-public class Product{
+public class Product extends Invoice{
 
     private final UUID id;
     private final String name;
@@ -16,15 +16,19 @@ public class Product{
 
     private final String type;
 
+
     public Product(@JsonProperty("id") UUID id,
-                        @JsonProperty("name") String name,
-                        @JsonProperty("weight") float weight,
-                        @JsonProperty("type") String type
+                   @JsonProperty("name") String name,
+                   @JsonProperty("weight") float weight,
+                   @JsonProperty("type") String type,
+                   @JsonProperty("price")Long price
+
     ) {
         this.id = id;
         this.name = name;
         this.weight = weight;
         this.type = type;
+        this.setPrice(price);
     }
 
     public UUID getId() {

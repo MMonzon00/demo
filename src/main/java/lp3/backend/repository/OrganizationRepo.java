@@ -2,7 +2,6 @@ package lp3.backend.repository;
 
 import lp3.backend.dao.OrganizationDao;
 import lp3.backend.domain.Organization;
-import lp3.backend.domain.User;
 import org.springframework.stereotype.Repository;
 
 import java.util.*;
@@ -10,55 +9,56 @@ import java.util.*;
 @Repository("organizationDao")
 public class OrganizationRepo implements OrganizationDao {
 
-    private static List<Organization> DB = new ArrayList<>();
+    private final static List<Organization> orgDB = new ArrayList<>();
 
     @Override
     public int insertOrganization(UUID id, Organization Organization){
-        DB.add(new Organization(id, Organization.getName(),Organization.getEmail(), Organization.getType()));
+        orgDB.add(new Organization(id, Organization.getName(),Organization.getEmail(), Organization.getType(),Organization.getAddress(),Organization.getOrganizationID()));
         return 0;
     }
 
     @Override
     public List<Organization> selectAllOrganizations() {
-        return DB;
+        return orgDB;
     }
 
     @Override
     public Optional<Organization> selectOrganizationById(UUID id) {
-        return DB.stream()
+        return orgDB.stream()
                 .filter(Organization -> Organization.getId().equals(id))
                 .findFirst();
     }
 
+
+
+/*
     @Override
-    public Optional<Organization> selectOrganizationByType(String Type) {
-        Comparator<User> userTypeComparator = Comparator.comparing(User::getEmail);
-        return null;
+    public ArrayList<Organization> selectbyType(String type) {
+        return finorgDByTipo(type);
     }
+*/
 
     @Override
-    public int deleteOrganizationById(UUID id) {
+    public void deleteOrganizationById(UUID id) {
         Optional<Organization> OrganizationMaybe = selectOrganizationById(id);
         if (OrganizationMaybe.isEmpty()) {
-            return 0;
+            return;
         }
-        DB.remove(OrganizationMaybe.get());
-        return 1;
+        orgDB.remove(OrganizationMaybe.get());
     }
 
 
     @Override
-    public int updateOrganizationById(UUID id, Organization update) {
-        return selectOrganizationById(id)
+    public void updateOrganizationById(UUID id, Organization update) {
+        selectOrganizationById(id)
                 .map(Organization -> {
-                    int indexOfOrganizationToUpdate = DB.indexOf(Organization);
-                    if (indexOfOrganizationToUpdate >= 0){
-                        DB.set(indexOfOrganizationToUpdate, new Organization(id, update.getName(), update.getEmail(), update.getType()));
+                    int indexOfOrganizationToUpdate = orgDB.indexOf(Organization);
+                    if (indexOfOrganizationToUpdate >= 0) {
+                        orgDB.set(indexOfOrganizationToUpdate, new Organization(id, update.getName(), update.getEmail(), update.getType(),update.getAddress(), update.getOrganizationID()));
                         return 1;
                     }
                     return 0;
-                } )
-                .orElse(0);
+                });
     }
 
 }

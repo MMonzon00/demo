@@ -1,6 +1,13 @@
+
 package lp3.backend.domain;
 
-// --Commented out by Inspection START (1/26/2023 12:13 AM):
-//public class FowardAgent {
-//}
-// --Commented out by Inspection STOP (1/26/2023 12:13 AM)
+
+import java.util.UUID;
+
+public class FowardAgent extends User{
+
+    public FowardAgent(UUID id, String username, String email, String type, String organization) {
+        super(id, username, email, "FowardAgent", organization);
+    }
+
+}

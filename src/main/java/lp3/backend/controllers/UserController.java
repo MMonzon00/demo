@@ -1,6 +1,6 @@
-package lp3.backend.api;
+package lp3.backend.controllers;
 
-import lp3.backend.domain.User;
+import lp3.backend.domain.*;
 import lp3.backend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.UUID;
 
-@RequestMapping("api/lp3/user")
+import static lp3.backend.constants.ApiPaths.USER;
+
+@RequestMapping(path = USER)
 @RestController
 public class UserController {
     private final UserService UserService;
@@ -17,8 +19,28 @@ public class UserController {
         this.UserService = UserService;
     }
     @PostMapping
-    public void addUser(@RequestBody User User){
-        UserService.addUser(User);
+    public void addUser(@RequestBody User user){
+        UserService.addUser(user);
+    }
+
+    @PostMapping(path = "/admin")
+    public void addUser(@RequestBody Administrator user){
+        UserService.addAdmin(user);
+    }
+
+    @PostMapping(path = "/auditor")
+    public void addUser(@RequestBody Auditor auditor){
+        UserService.addAuditor(auditor);
+    }
+
+    @PostMapping(path = "/carrier")
+    public void addUser(@RequestBody Carrier carrier){
+        UserService.addCarrier(carrier);
+    }
+
+    @PostMapping(path = "/fowardagent")
+    public void addUser(@RequestBody FowardAgent fowardAgent){
+        UserService.addFowardAgent(fowardAgent);
     }
 
     @GetMapping

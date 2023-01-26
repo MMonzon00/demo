@@ -1,6 +1,7 @@
 package lp3.backend.dao;
 
 import lp3.backend.domain.Organization;
+
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -8,19 +9,21 @@ import java.util.UUID;
 public interface OrganizationDao {
     int insertOrganization (UUID id, Organization organization);
 
-    default int insertOrganization(Organization organization){
+    default void insertOrganization(Organization organization){
         UUID id = UUID.randomUUID();
-        return insertOrganization(id, organization);
+        insertOrganization(id, organization);
     }
 
     List<Organization> selectAllOrganizations();
 
     Optional<Organization> selectOrganizationById(UUID id);
 
-    Optional<Organization> selectOrganizationByType(String type);
+//    Optional<Organization> selectOrganizationByType(String type);
 
-    int deleteOrganizationById(UUID id);
+    void deleteOrganizationById(UUID id);
 
-    int updateOrganizationById(UUID id, Organization organization);
+    void updateOrganizationById(UUID id, Organization organization);
+
+
 }
 

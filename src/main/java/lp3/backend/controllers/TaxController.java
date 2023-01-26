@@ -1,4 +1,4 @@
-package lp3.backend.api;
+package lp3.backend.controllers;
 
 import lp3.backend.domain.Tax;
 import lp3.backend.service.TaxService;
@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.UUID;
 
-@RequestMapping("api/lp3/tax")
+import static lp3.backend.constants.ApiPaths.TAX;
+
+@RequestMapping(path = TAX)
 @RestController
 public class TaxController {
     private final TaxService TaxService;

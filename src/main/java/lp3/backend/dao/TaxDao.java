@@ -9,9 +9,9 @@ import java.util.UUID;
 public interface TaxDao {
     int insertTax (UUID id, Tax Tax);
 
-    default int insertTax(Tax Tax){
+    default void insertTax(Tax Tax){
         UUID id = UUID.randomUUID();
-        return insertTax(id, Tax);
+        insertTax(id, Tax);
     }
 
     List<Tax> selectAllTax();
@@ -20,8 +20,8 @@ public interface TaxDao {
 
 //    Optional<Tax> selectTaxByName(String name);
 
-    int deleteTaxById(UUID id);
+    void deleteTaxById(UUID id);
 
-    int updateTaxById(UUID id, Tax Tax);
+    void updateTaxById(UUID id, Tax Tax);
 }
 

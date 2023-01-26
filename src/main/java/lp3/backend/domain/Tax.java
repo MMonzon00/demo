@@ -1,14 +1,13 @@
 package lp3.backend.domain;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lp3.backend.exception.ApiRequestException;
 
 
 import java.util.UUID;
 
 
-
 public class Tax {
-
 
     private final UUID id;
 

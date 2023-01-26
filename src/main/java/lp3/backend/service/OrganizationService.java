@@ -15,6 +15,7 @@ import java.util.UUID;
 @Service
 public class OrganizationService {
 
+    //Instance of where we will store all data
     private final OrganizationDao OrganizationDao;
 
     private final EmailValidation emailValidation;
@@ -48,6 +49,9 @@ public class OrganizationService {
     }
 
     public void updateOrganization(UUID id, Organization newOrganization) {
+        if (!emailValidation.test(newOrganization.getEmail())) {
+            throw new ApiRequestException(newOrganization.getEmail() + " is not valid");
+        }
         OrganizationDao.updateOrganizationById(id, newOrganization);
     }
 }

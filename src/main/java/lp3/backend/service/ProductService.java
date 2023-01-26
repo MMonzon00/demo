@@ -13,6 +13,8 @@ import java.util.UUID;
 @Service
 public class ProductService {
 
+
+    //Instance of where we will store all data
     private final ProductDao ProductDao;
     @Autowired
     public ProductService(@Qualifier("ProductDao") ProductDao ProductDao) {

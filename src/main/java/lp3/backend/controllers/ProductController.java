@@ -1,4 +1,4 @@
-package lp3.backend.api;
+package lp3.backend.controllers;
 
 import lp3.backend.domain.Product;
 import lp3.backend.service.ProductService;
@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.UUID;
 
-@RequestMapping("api/lp3/product")
+import static lp3.backend.constants.ApiPaths.PRODUCT;
+
+@RequestMapping(path = PRODUCT)
 @RestController
 public class ProductController {
     private final ProductService ProductService;
