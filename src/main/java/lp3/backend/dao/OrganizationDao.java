@@ -1,6 +1,6 @@
 package lp3.backend.dao;
 
-import lp3.backend.model.Organization;
+import lp3.backend.domain.Organization;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -17,7 +17,7 @@ public interface OrganizationDao {
 
     Optional<Organization> selectOrganizationById(UUID id);
 
-//    Optional<Organization> selectOrganizationByType(String type);
+    Optional<Organization> selectOrganizationByType(String type);
 
     int deleteOrganizationById(UUID id);
 

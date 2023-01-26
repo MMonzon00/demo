@@ -1,11 +1,12 @@
-package lp3.backend.model;
+package lp3.backend.domain;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+
 import java.util.UUID;
 
-public class Organization{
 
+public class Organization{
         private final UUID id;
         private final String name;
 
@@ -16,15 +17,14 @@ public class Organization{
         public Organization(@JsonProperty("id") UUID id,
                             @JsonProperty("name") String name,
                             @JsonProperty("email") String email,
-                            @JsonProperty("type") String type
-        ) {
+                            @JsonProperty("type") String type) {
             this.id = id;
             this.name = name;
             this.email = email;
             this.type = type;
         }
 
-        public UUID getId() {
+    public UUID getId() {
             return id;
         }
 

@@ -1,7 +1,7 @@
 package lp3.backend.repository;
 
 import lp3.backend.dao.ProductDao;
-import lp3.backend.model.Product;
+import lp3.backend.domain.Product;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;

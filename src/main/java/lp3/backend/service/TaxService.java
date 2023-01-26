@@ -1,7 +1,7 @@
 package lp3.backend.service;
 
 import lp3.backend.dao.TaxDao;
-import lp3.backend.model.Tax;
+import lp3.backend.domain.Tax;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -19,8 +19,8 @@ public class TaxService {
         this.TaxDao = TaxDao;
     }
 
-    public int addTax(Tax Tax){
-        return TaxDao.insertTax(Tax);
+    public void addTax(Tax Tax){
+        TaxDao.insertTax(Tax);
     }
 
     public List<Tax> getAllTax(){
@@ -31,12 +31,12 @@ public class TaxService {
         return TaxDao.selectTaxById(id);
     }
 
-    public int deleteTax(UUID id){
-        return TaxDao.deleteTaxById(id);
+    public void deleteTax(UUID id){
+        TaxDao.deleteTaxById(id);
     }
 
-    public int updateTax(UUID id, Tax newTax) {
-        return TaxDao.updateTaxById(id, newTax);
+    public void updateTax(UUID id, Tax newTax) {
+        TaxDao.updateTaxById(id, newTax);
     }
 }
 

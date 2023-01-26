@@ -1,6 +1,6 @@
 package lp3.backend.api;
 
-import lp3.backend.model.Organization;
+import lp3.backend.domain.Organization;
 import lp3.backend.service.OrganizationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

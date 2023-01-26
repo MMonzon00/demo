@@ -1,16 +1,14 @@
-package lp3.backend.model;
+package lp3.backend.domain;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.persistence.Tuple;
-import jakarta.persistence.TupleElement;
 
-import java.util.ArrayList;
-import java.util.List;
+
 import java.util.UUID;
-import java.util.Vector;
+
 
 
 public class Tax {
+
 
     private final UUID id;
 

@@ -1,8 +1,7 @@
 package lp3.backend.api;
 
-import lp3.backend.model.Product;
+import lp3.backend.domain.Product;
 import lp3.backend.service.ProductService;
-import lp3.backend.dao.ProductDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

@@ -1,24 +1,31 @@
-package lp3.backend.model;
+package lp3.backend.domain;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.persistence.*;
 import org.springframework.lang.NonNull;
 
 import java.util.UUID;
 
+
 public class User{
 
-    @NonNull
+    //Primary key
     private final UUID id;
 
+
+    @Column
     @NonNull
     private final String username;
 
+    @Column
     @NonNull
     private final String email;
 
+    @Column
     @NonNull
     public final String type;
 
+    @Column
     @NonNull
     private final String organization;
 
@@ -35,6 +42,9 @@ public class User{
         this.type = type;
         this.organization = organization;
     }
+
+
+
 
     public UUID getId() {
         return id;

@@ -1,6 +1,6 @@
 package lp3.backend.dao;
 
-import lp3.backend.model.Product;
+import lp3.backend.domain.Product;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;

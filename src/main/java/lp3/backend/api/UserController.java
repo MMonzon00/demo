@@ -1,6 +1,6 @@
 package lp3.backend.api;
 
-import lp3.backend.model.User;
+import lp3.backend.domain.User;
 import lp3.backend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

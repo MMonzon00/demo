@@ -1,8 +1,10 @@
-package lp3.backend.model;
+package lp3.backend.domain;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+
 import java.util.UUID;
+
 
 
 public class Product{

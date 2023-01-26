@@ -1,7 +1,9 @@
 package lp3.backend.service;
 
 import lp3.backend.dao.OrganizationDao;
-import lp3.backend.model.Organization;
+import lp3.backend.domain.Organization;
+import lp3.backend.utilities.EmailValidation;
+import lp3.backend.exception.ApiRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -14,13 +16,19 @@ import java.util.UUID;
 public class OrganizationService {
 
     private final OrganizationDao OrganizationDao;
+
+    private final EmailValidation emailValidation;
     @Autowired
-    public OrganizationService(@Qualifier("organizationDao") OrganizationDao OrganizationDao) {
+    public OrganizationService(@Qualifier("organizationDao") OrganizationDao OrganizationDao,EmailValidation emailValidation) {
         this.OrganizationDao = OrganizationDao;
+        this.emailValidation = emailValidation;
     }
 
-    public int addOrganization(Organization organization){
-        return OrganizationDao.insertOrganization(organization);
+    public void addOrganization(Organization organization){
+        if (!emailValidation.test(organization.getEmail())) {
+            throw new ApiRequestException(organization.getEmail() + " is not valid");
+        }
+        OrganizationDao.insertOrganization(organization);
     }
 
     public List<Organization> getAllOrganizations(){
@@ -35,11 +43,11 @@ public class OrganizationService {
 //        return OrganizationDao.selectOrganizationByType(type);
 //    }
 
-    public int deleteOrganization(UUID id){
-        return OrganizationDao.deleteOrganizationById(id);
+    public void deleteOrganization(UUID id){
+        OrganizationDao.deleteOrganizationById(id);
     }
 
-    public int updateOrganization(UUID id, Organization newOrganization) {
-        return OrganizationDao.updateOrganizationById(id, newOrganization);
+    public void updateOrganization(UUID id, Organization newOrganization) {
+        OrganizationDao.updateOrganizationById(id, newOrganization);
     }
 }

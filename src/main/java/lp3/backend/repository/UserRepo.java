@@ -1,13 +1,10 @@
 package lp3.backend.repository;
 
 import lp3.backend.dao.UserDao;
-import lp3.backend.model.User;
+import lp3.backend.domain.User;
 import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.List;
+import java.util.*;
 
 @Repository("userDao")
 public class UserRepo implements UserDao {
@@ -20,6 +17,14 @@ public class UserRepo implements UserDao {
         return 0;
     }
 
+//    @Override
+//    public boolean isEmailTaken(User user) {
+//        Optional<String> opt =Optional.of(user.getEmail());
+//        assertTrue(opt.isPresent());
+//
+//        opt = Optional.ofNullable(null);
+//        assertFalse(opt.isPresent());
+//    }
     @Override
     public List<User> selectAllPeople() {
         return DB;

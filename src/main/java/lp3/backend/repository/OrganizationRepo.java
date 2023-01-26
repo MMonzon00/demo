@@ -1,13 +1,11 @@
 package lp3.backend.repository;
 
 import lp3.backend.dao.OrganizationDao;
-import lp3.backend.model.Organization;
+import lp3.backend.domain.Organization;
+import lp3.backend.domain.User;
 import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 
 @Repository("organizationDao")
 public class OrganizationRepo implements OrganizationDao {
@@ -32,11 +30,11 @@ public class OrganizationRepo implements OrganizationDao {
                 .findFirst();
     }
 
-//    @Override
-//    public Optional<Organization> selectOrganizationByType(String Type) {
-//        return System.out.println(DB.stream());
-//
-//    }
+    @Override
+    public Optional<Organization> selectOrganizationByType(String Type) {
+        Comparator<User> userTypeComparator = Comparator.comparing(User::getEmail);
+        return null;
+    }
 
     @Override
     public int deleteOrganizationById(UUID id) {

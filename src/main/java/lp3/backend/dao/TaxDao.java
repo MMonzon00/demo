@@ -1,6 +1,6 @@
 package lp3.backend.dao;
 
-import lp3.backend.model.Tax;
+import lp3.backend.domain.Tax;
 
 import java.util.List;
 import java.util.Optional;

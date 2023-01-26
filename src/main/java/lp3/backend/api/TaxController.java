@@ -1,6 +1,6 @@
 package lp3.backend.api;
 
-import lp3.backend.model.Tax;
+import lp3.backend.domain.Tax;
 import lp3.backend.service.TaxService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

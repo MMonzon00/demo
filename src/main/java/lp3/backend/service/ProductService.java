@@ -1,7 +1,7 @@
 package lp3.backend.service;
 
 import lp3.backend.dao.ProductDao;
-import lp3.backend.model.Product;
+import lp3.backend.domain.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -19,8 +19,8 @@ public class ProductService {
         this.ProductDao = ProductDao;
     }
 
-    public int addProduct(Product Product){
-        return ProductDao.insertProduct(Product);
+    public void addProduct(Product Product){
+        ProductDao.insertProduct(Product);
     }
 
     public List<Product> getAllProducts(){
@@ -31,12 +31,12 @@ public class ProductService {
         return ProductDao.selectProductById(id);
     }
 
-    public int deleteProduct(UUID id){
-        return ProductDao.deleteProductById(id);
+    public void deleteProduct(UUID id){
+        ProductDao.deleteProductById(id);
     }
 
-    public int updateProduct(UUID id, Product newProduct) {
-        return ProductDao.updateProductById(id, newProduct);
+    public void updateProduct(UUID id, Product newProduct) {
+        ProductDao.updateProductById(id, newProduct);
     }
 }
 

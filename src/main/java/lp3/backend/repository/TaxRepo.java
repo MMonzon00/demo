@@ -1,7 +1,7 @@
 package lp3.backend.repository;
 
 import lp3.backend.dao.TaxDao;
-import lp3.backend.model.Tax;
+import lp3.backend.domain.Tax;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
