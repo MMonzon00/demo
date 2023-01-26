@@ -16,7 +16,7 @@ public class OrganizationRepo implements OrganizationDao {
 
     @Override
     public int insertOrganization(UUID id, Organization Organization){
-        DB.add(new Organization(id, Organization.getName(),Organization.getEmail()));
+        DB.add(new Organization(id, Organization.getName(),Organization.getEmail(), Organization.getType()));
         return 0;
     }
 
@@ -31,6 +31,12 @@ public class OrganizationRepo implements OrganizationDao {
                 .filter(Organization -> Organization.getId().equals(id))
                 .findFirst();
     }
+
+//    @Override
+//    public Optional<Organization> selectOrganizationByType(String Type) {
+//        return System.out.println(DB.stream());
+//
+//    }
 
     @Override
     public int deleteOrganizationById(UUID id) {
@@ -49,11 +55,12 @@ public class OrganizationRepo implements OrganizationDao {
                 .map(Organization -> {
                     int indexOfOrganizationToUpdate = DB.indexOf(Organization);
                     if (indexOfOrganizationToUpdate >= 0){
-                        DB.set(indexOfOrganizationToUpdate, new Organization(id, update.getName(), update.getEmail()));
+                        DB.set(indexOfOrganizationToUpdate, new Organization(id, update.getName(), update.getEmail(), update.getType()));
                         return 1;
                     }
                     return 0;
                 } )
                 .orElse(0);
     }
+
 }

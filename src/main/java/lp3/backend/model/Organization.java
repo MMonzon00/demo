@@ -1,22 +1,31 @@
 package lp3.backend.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
 import java.util.UUID;
 
-public class Organization {
+public class Organization{
+
         private final UUID id;
         private final String name;
 
         private final String email;
 
+        private final String type;
+
         public Organization(@JsonProperty("id") UUID id,
-                    @JsonProperty("name") String name,
-                    @JsonProperty("email") String email
+                            @JsonProperty("name") String name,
+                            @JsonProperty("email") String email,
+                            @JsonProperty("type") String type
         ) {
             this.id = id;
             this.name = name;
             this.email = email;
+            this.type = type;
         }
 
         public UUID getId() {
@@ -29,5 +38,9 @@ public class Organization {
 
         public String getEmail() {
             return email;
+        }
+
+        public String getType() {
+            return type;
         }
 }

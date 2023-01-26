@@ -16,6 +16,9 @@ public interface OrganizationDao {
     List<Organization> selectAllOrganizations();
 
     Optional<Organization> selectOrganizationById(UUID id);
+
+//    Optional<Organization> selectOrganizationByType(String type);
+
     int deleteOrganizationById(UUID id);
 
     int updateOrganizationById(UUID id, Organization organization);

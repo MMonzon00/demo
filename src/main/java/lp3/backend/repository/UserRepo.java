@@ -16,7 +16,7 @@ public class UserRepo implements UserDao {
 
     @Override
     public int insertUser(UUID id, User User){
-        DB.add(new User(id, User.getUsername(),User.getEmail(),User.getOrganization()));
+        DB.add(new User(id, User.getUsername(),User.getEmail(), User.getType(), User.getOrganization()));
         return 0;
     }
 
@@ -49,7 +49,7 @@ public class UserRepo implements UserDao {
                 .map(User -> {
                     int indexOfUserToUpdate = DB.indexOf(User);
                     if (indexOfUserToUpdate >= 0){
-                        DB.set(indexOfUserToUpdate, new User(id, update.getUsername(), update.getEmail(),update.getOrganization()));
+                        DB.set(indexOfUserToUpdate, new User(id, update.getUsername(), update.getEmail(), User.getType(), update.getOrganization()));
                         return 1;
                     }
                     return 0;

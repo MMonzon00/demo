@@ -31,6 +31,10 @@ public class OrganizationService {
         return OrganizationDao.selectOrganizationById(id);
     }
 
+//    public Optional<Organization> getOrganizationByType(String type){
+//        return OrganizationDao.selectOrganizationByType(type);
+//    }
+
     public int deleteOrganization(UUID id){
         return OrganizationDao.deleteOrganizationById(id);
     }

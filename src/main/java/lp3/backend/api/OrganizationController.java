@@ -2,7 +2,6 @@ package lp3.backend.api;
 
 import lp3.backend.model.Organization;
 import lp3.backend.service.OrganizationService;
-import lp3.backend.dao.OrganizationDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,18 +28,24 @@ public class OrganizationController {
     }
 
     @GetMapping(path = "{id}")
-    public Organization getUserById(@PathVariable("id") UUID id){
+    public Organization getOrganizationById(@PathVariable("id") UUID id){
         return OrganizationService.getOrganizationById(id)
             .orElse(null);
     }
 
+//    @GetMapping(path = "{id}")
+//    public Organization getOrganizationByType(@PathVariable("type") String type){
+//        return OrganizationService.getOrganizationByType(type)
+//                .orElse(null);
+//    }
+
     @DeleteMapping(path = "{id}")
-    public void deleteUserById(@PathVariable("id") UUID id) {
+    public void deleteOrganizationById(@PathVariable("id") UUID id) {
         OrganizationService.deleteOrganization(id);
     }
 
     @PutMapping(path = "{id}")
-    public void updateUser(@PathVariable("id") UUID id, @RequestBody Organization organizationToUpdate){
+    public void updateOrganization(@PathVariable("id") UUID id, @RequestBody Organization organizationToUpdate){
         OrganizationService.updateOrganization(id,organizationToUpdate);
     }
 }
